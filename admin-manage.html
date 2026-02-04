@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AUREA – Manage Products</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="index.html" aria-label="Home">
+      <img class="brand__logo" src="assets/images/logo.png" alt="Aurea Floral & Plants logo">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="#plants">Shop</a>
+      <a href="product.html">Product</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="cart.html">Checkout</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head" style="margin-top:0">
+      <div>
+        <h2>Manage products</h2>
+        <p>Prototype UI for CRUD screens (add/modify/delete) — will be implemented with PHP + database.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <b style="color: var(--sage-700);">Add new product</b>
+        <p style="color: var(--muted); margin-top:6px;">Name, price, stock, image filename…</p>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn--primary" href="#">Add</a>
+          <a class="btn btn--ghost" style="color: var(--ink); border-color: rgba(220,234,225,.95); background: rgba(255,255,255,.78)" href="#">Clear</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <b style="color: var(--sage-700);">Search / modify</b>
+        <p style="color: var(--muted); margin-top:6px;">Search by ID or name, then update fields.</p>
+        <div style="margin-top:10px;">
+          <a class="btn btn--primary" href="#">Search</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <b style="color: var(--sage-700);">Delete product</b>
+        <p style="color: var(--muted); margin-top:6px;">Delete by ID (confirm first).</p>
+        <div style="margin-top:10px;">
+          <a class="btn btn--primary" href="#">Delete</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <b style="color: var(--sage-700);">Tips</b>
+        <p style="color: var(--muted); margin-top:6px;">Add author comments in PHP files for each task.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer"><div class="container">© 2026 AUREA – Floral & Plants</div></footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

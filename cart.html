@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AUREA – Cart</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="index.html" aria-label="Home">
+      <img class="brand__logo" src="assets/images/logo.png" alt="Aurea Floral & Plants logo">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="#plants">Shop</a>
+      <a href="product.html">Product</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="cart.html">Checkout</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head" style="margin-top:0">
+      <div>
+        <h2>Your cart</h2>
+        <p>Prototype UI. Later you’ll implement PHP Sessions to add/update/remove items.</p>
+      </div>
+      <a class="btn btn--primary" href="checkout.html">Go to checkout</a>
+    </div>
+
+    <div class="split" style="grid-template-columns: 1.3fr .7fr;">
+      <div class="panel">
+        <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+          <img src="assets/images/p1.jpg" alt="Item" style="width:120px; height:90px; object-fit:cover; border-radius: 16px; border:1px solid rgba(220,234,225,.95)">
+          <div style="flex:1 1 240px;">
+            <b>Philodendron</b>
+            <div class="card__meta">Qty: 2</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="price">$44</div>
+            <a class="btn btn--ghost" style="margin-top:10px; color: var(--ink); border-color: rgba(220,234,225,.95); background: rgba(255,255,255,.78)" href="#">Remove</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <b style="color: var(--sage-700);">Order summary</b>
+        <div style="margin-top:10px; display:grid; gap:6px; color: var(--muted); font-weight:650;">
+          <div style="display:flex; justify-content:space-between;"><span>Subtotal</span><span>$44</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>Delivery</span><span>$6</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>Discount</span><span>-$0</span></div>
+        </div>
+        <div style="margin-top:12px; display:flex; justify-content:space-between; font-weight:900;">
+          <span>Total</span><span>$50</span>
+        </div>
+        <a class="btn btn--primary" style="margin-top:12px; width:100%;" href="checkout.html">Checkout</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer"><div class="container">© 2026 AUREA – Floral & Plants</div></footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
