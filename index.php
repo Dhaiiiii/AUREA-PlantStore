@@ -1,3 +1,14 @@
+<?php
+include 'db.php';
+
+$sql = "SELECT product_id, name, price, quantity, description, image FROM products";
+$result = $conn->query($sql);
+
+if (!$result) {
+    die("Query failed: " . $conn->error);
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,13 +20,13 @@
 <body>
 <header class="topbar">
   <div class="container topbar__inner">
-    <a class="brand" href="index.html" aria-label="Home">
+    <a class="brand" href="index.php" aria-label="Home">
       <img class="brand__logo" src="assets/images/logo.png" alt="Aurea Floral & Plants logo">
     </a>
     <nav class="nav" aria-label="Main">
-      <a href="index.html">Home</a>
+      <a href="index.php">Home</a>
       <a href="#plants">Shop</a>
-      <a href="product.html">Product</a>
+      <a href="product.php">Product</a>
       <a href="cart.html">Cart</a>
       <a href="contact.html">Contact</a>
       <a class="cta" href="cart.html">Checkout</a>
@@ -53,57 +64,27 @@
         <h2>Our favorite plants</h2>
         <p>Clean product cards with calm spacing — inspired by your reference style, built as an original layout for AUREA.</p>
       </div>
-      <a class="btn btn--primary" href="product.html">View product</a>
+      <a class="btn btn--primary" href="product.php">View product</a>
     </div>
 
     <div class="grid">
-      <a class="card" href="product.html">
-        <img class="card__img" src="assets/images/p1.jpg" alt="Philodendron">
-        <div class="card__body">
-          <div class="card__title">Philodendron</div>
-          <div class="card__meta">Indoor • Easy care</div>
-          <div class="card__row">
-            <div class="price">$22</div>
-            <div class="pill">+</div>
-          </div>
-        </div>
-      </a>
-
-      <a class="card" href="product.html">
-        <img class="card__img" src="assets/images/p2.jpg" alt="Peace Lily">
-        <div class="card__body">
-          <div class="card__title">Peace Lily</div>
-          <div class="card__meta">Air purifier • Low light</div>
-          <div class="card__row">
-            <div class="price">$18</div>
-            <div class="pill">+</div>
-          </div>
-        </div>
-      </a>
-
-      <a class="card" href="product.html">
-        <img class="card__img" src="assets/images/p3.jpg" alt="Caladium">
-        <div class="card__body">
-          <div class="card__title">Caladium</div>
-          <div class="card__meta">Colorful leaves</div>
-          <div class="card__row">
-            <div class="price">$20</div>
-            <div class="pill">+</div>
-          </div>
-        </div>
-      </a>
-
-      <a class="card" href="product.html">
-        <img class="card__img" src="assets/images/p4.jpg" alt="ZZ Plant">
-        <div class="card__body">
-          <div class="card__title">ZZ Plant</div>
-          <div class="card__meta">Drought tolerant</div>
-          <div class="card__row">
-            <div class="price">$24</div>
-            <div class="pill">+</div>
-          </div>
-        </div>
-      </a>
+      <?php if ($result->num_rows > 0) { ?>
+        <?php while ($row = $result->fetch_assoc()) { ?>
+          <a class="card" href="product.php?id=<?php echo (int)$row['product_id']; ?>">
+            <img class="card__img" src="assets/images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
+            <div class="card__body">
+              <div class="card__title"><?php echo htmlspecialchars($row['name']); ?></div>
+              <div class="card__meta"><?php echo htmlspecialchars($row['description']); ?></div>
+              <div class="card__row">
+                <div class="price">$<?php echo number_format($row['price'], 2); ?></div>
+                <div class="pill">+</div>
+              </div>
+            </div>
+          </a>
+        <?php } ?>
+      <?php } else { ?>
+        <p>No products found.</p>
+      <?php } ?>
     </div>
   </div>
 </section>
@@ -149,7 +130,7 @@
       <h2 style="color: var(--sage-700);">Spring into green</h2>
       <p style="color: var(--muted); margin-top:6px;">Up to <b>25% off</b> selected indoor plants.</p>
       <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn btn--primary" href="product.html">Shop the sale</a>
+        <a class="btn btn--primary" href="product.php">Shop the sale</a>
         <a class="btn btn--ghost" style="color: var(--ink); border-color: rgba(220,234,225,.9); background: rgba(255,255,255,.75)" href="#plants">Browse</a>
       </div>
       <img style="margin-top:12px; border-radius: 18px; border: 1px solid rgba(220,234,225,.9)" src="assets/images/room.jpg" alt="Plants in room">
@@ -181,8 +162,8 @@
     <div>
       <b style="color: var(--ink);">Pages</b>
       <div style="margin-top:8px; display:grid; gap:6px;">
-        <a href="index.html">Home</a>
-        <a href="product.html">Product</a>
+        <a href="index.php">Home</a>
+        <a href="product.php">Product</a>
         <a href="cart.html">Cart</a>
         <a href="contact.html">Contact</a>
       </div>
