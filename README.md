@@ -19,6 +19,7 @@ Move the project folder to the XAMPP htdocs directory.
 Example:
 
 C:\xampp\htdocs\AUREA-PlantStore
+
 3. Import the Database
 
 Open MySQL Workbench and do the following:
