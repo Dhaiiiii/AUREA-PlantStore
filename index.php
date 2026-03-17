@@ -39,7 +39,7 @@ if (!$result) {
     <div class="hero__wrap">
       <div class="hero__content">
         <span class="badge">Premium Plant Store • Calm Aesthetic</span>
-        <h1>Discover beautiful indoor plants for every corner of your home</h1>
+        <h1>Discover beautiful indoor Dhai for every corner of your home</h1>
         <p>A modern plant shop experience — clean layout, soft greens, and premium cards. Prototype UI for CIS311.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#plants">Shop now</a>
