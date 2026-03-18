@@ -140,7 +140,7 @@ $result = $conn->query($query);
           <a class="btn btn--primary" href="edit-product.php?id=<?php echo $row['product_id']; ?>">Edit</a>
           <a class="btn btn--primary" style="background:#d9534f;"
              href="delete-product.php?id=<?php echo $row['product_id']; ?>"
-             onclick="return confirm('Delete this product?')">Delete</a>
+             onclick="return confirm('Are you sure you want to delete this item? This action is irreversible.')">Delete</a>
         </td>
       </tr>
       <?php endwhile; ?>
