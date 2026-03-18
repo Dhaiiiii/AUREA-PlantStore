@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS `aurea_store` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `aurea_store` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `aurea_store`;
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
