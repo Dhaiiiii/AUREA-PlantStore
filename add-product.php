@@ -13,36 +13,47 @@ $message = "";
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    $quantity = $_POST['quantity'];
+    $name = trim($_POST['name']);
+    $price = trim($_POST['price']);
+    $quantity = trim($_POST['quantity']);
+    $description = trim($_POST['description']);
 
-    // Handle image upload
-    $imageName = $_FILES['image']['name'];
-    $imageTmp = $_FILES['image']['tmp_name'];
-
-    // Save image to assets/images/
-    $targetPath = "assets/images/" . basename($imageName);
-
-    if (move_uploaded_file($imageTmp, $targetPath)) {
-
-        // Insert into database
-        $query = "INSERT INTO products (name, price, quantity, image)
-                  VALUES ('$name', '$price', '$quantity', '$imageName')";
-
-        if ($conn->query($query)) {
-            header("Location: admin-manage.php?added=1");
-            exit();
-        } else {
-            $message = "Database error: " . $conn->error;
-        }
-
+    if ($name == "" || $price == "" || $quantity == "" || $description == "") {
+        $message = "All fields are required.";
+    } elseif (!is_numeric($price)) {
+        $message = "Price must be a number.";
+    } elseif ($quantity < 0) {
+        $message = "Quantity cannot be less than 0.";
+    } elseif (empty($_FILES['image']['name'])) {
+        $message = "Please upload an image.";
     } else {
-        $message = "Image upload failed.";
+
+        // Handle image upload
+        $imageName = $_FILES['image']['name'];
+        $imageTmp = $_FILES['image']['tmp_name'];
+        $targetPath = "assets/images/" . basename($imageName);
+
+        if (move_uploaded_file($imageTmp, $targetPath)) {
+
+            // Insert into DB
+            $query = "
+                INSERT INTO products (name, price, quantity, description, image)
+                VALUES ('$name', '$price', '$quantity', '$description', '$imageName')
+            ";
+
+            if ($conn->query($query)) {
+                header("Location: admin-manage.php?added=1");
+                exit();
+            } else {
+                $message = "Database error: " . $conn->error;
+            }
+
+        } else {
+            $message = "Image upload failed.";
+        }
     }
 }
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -50,7 +61,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Add Product – AUREA</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
-  <script src="validation.js"></script>
+
+  <style>
+    .form-label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--sage-700);
+    }
+
+    .form-input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #dceae1;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .panel {
+      padding: 25px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid #e5efe8;
+      max-width: 900px;      /* same as your new edit page */
+      margin: 0 0 60px 0;     /* left aligned */
+    }
+
+    .section {
+      padding-bottom: 80px;
+    }
+  </style>
 </head>
 
 <body>
@@ -69,25 +111,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <section class="section">
   <div class="container">
 
-    <h2>Add New Product</h2>
-    <p style="color:red;"><?php echo $message; ?></p>
+    <div class="section__head" style="margin-top:0">
+      <div>
+        <h2>Add New Product</h2>
+        <p>Fill in the details below to add a new product.</p>
+      </div>
+    </div>
 
-    <form method="POST" enctype="multipart/form-data" onsubmit="return validateAddProduct();">
+    <div class="panel">
 
-      <label>Product Name</label>
-      <input type="text" name="name" id="name">
+      <p style="color:red;"><?php echo $message; ?></p>
 
-      <label>Price</label>
-      <input type="text" name="price" id="price">
+      <form method="POST" enctype="multipart/form-data" onsubmit="return validateAddProduct();">
 
-      <label>Quantity</label>
-      <input type="number" name="quantity" id="quantity">
+        <label class="form-label">Product Name</label>
+        <input type="text" class="form-input" name="name" id="name">
 
-      <label>Product Image</label>
-      <input type="file" name="image" id="image">
+        <label class="form-label">Price</label>
+        <input type="text" class="form-input" name="price" id="price">
 
-      <button class="btn btn--primary" type="submit">Add Product</button>
-    </form>
+        <label class="form-label">Quantity</label>
+        <input type="number" class="form-input" min="0" name="quantity" id="quantity">
+
+        <label class="form-label">Description</label>
+        <textarea class="form-input" rows="4" name="description" id="description"></textarea>
+
+        <label class="form-label">Upload Image</label>
+        <input type="file" class="form-input" name="image" id="image">
+
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button class="btn btn--primary" type="submit">Add Product</button>
+          <a class="btn btn--ghost" href="admin-manage.php">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
 
   </div>
 </section>
