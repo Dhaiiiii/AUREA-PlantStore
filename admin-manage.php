@@ -107,7 +107,7 @@ $result = $conn->query($query);
     <div class="section__head" style="margin-top:0">
       <div>
         <h2>Manage products</h2>
-        <p>CRUD operations implemented with PHP + MySQL.</p>
+        <p>Manage all products — add, edit, or remove items.</p>
       </div>
       <a href="logout.php" class="btn btn--primary">Logout</a>
     </div>
