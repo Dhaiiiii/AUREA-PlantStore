@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Add Product – AUREA</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="validation.js"></script> <!--validation-->
 
   <style>
     .form-label {
@@ -85,8 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       border-radius: 10px;
       background: #fff;
       border: 1px solid #e5efe8;
-      max-width: 900px;      /* same as your new edit page */
-      margin: 0 0 60px 0;     /* left aligned */
+      max-width: 900px;
+      margin: 0 0 60px 0;
     }
 
     .section {

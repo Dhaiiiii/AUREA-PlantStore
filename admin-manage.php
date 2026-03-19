@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php';
+require 'db.php'; 
 
 // Protect admin page
 if (!isset($_SESSION['admin'])) {
@@ -65,6 +65,23 @@ $result = $conn->query($query);
     .actions a {
         margin-right: 6px;
     }
+
+    /* 🌿 AUREA-style search input */
+    .search-input {
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(220,234,225,.95);
+        background: rgba(255,255,255,.9);
+        width: 260px;
+        font-size: 15px;
+        transition: 0.2s ease;
+    }
+
+    .search-input:focus {
+        border-color: var(--sage-600);
+        box-shadow: 0 0 0 3px rgba(142, 180, 160, 0.25);
+        outline: none;
+    }
   </style>
 </head>
 <body>
@@ -97,7 +114,13 @@ $result = $conn->query($query);
 
     <!-- Search Bar -->
     <form method="GET" style="margin-bottom:20px;">
-      <input type="text" name="search" placeholder="Search by name or ID" value="<?php echo $search; ?>">
+      <input 
+        type="text" 
+        name="search" 
+        class="search-input" 
+        placeholder="Search by name or ID" 
+        value="<?php echo $search; ?>"
+      >
       <button class="btn btn--primary" type="submit">Search</button>
     </form>
 

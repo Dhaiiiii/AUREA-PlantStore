@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Edit Product – AUREA</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="validation.js"></script> <!--validation -->
 
   <style>
     .form-label {
@@ -102,18 +103,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       background: #fff;
     }
 
-    /* ⭐ ONLY CHANGE: wider panel + left aligned */
     .panel {
       padding: 25px;
       border-radius: 10px;
       background: #fff;
       border: 1px solid #e5efe8;
-      max-width: 900px;      /* doubled width */
-      margin: 0 0 60px 0;     /* left aligned, bottom spacing */
+      max-width: 900px;
+      margin: 0 0 60px 0;
     }
 
     .section {
-      padding-bottom: 80px;  /* prevents footer overlap */
+      padding-bottom: 80px;
     }
   </style>
 </head>
@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <p style="color:red;"><?php echo $message; ?></p>
 
-      <form method="POST" enctype="multipart/form-data">
+      <form method="POST" enctype="multipart/form-data" onsubmit="return validateEditProduct();"> <!--Validation-->
 
         <label class="form-label">Product Name</label>
         <input type="text" class="form-input" name="name" value="<?php echo $product['name']; ?>">

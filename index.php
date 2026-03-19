@@ -28,7 +28,7 @@ if (!$result) {
       <a href="#plants">Shop</a>
       <a href="product.php">Product</a>
       <a href="cart.html">Cart</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.php">Contact</a>
       <a class="cta" href="cart.html">Checkout</a>
     </nav>
   </div>
