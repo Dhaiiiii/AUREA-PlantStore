@@ -171,7 +171,7 @@ if (!$result) {
     <div>
       <b style="color: var(--ink);">Project</b>
       <div style="margin-top:8px; display:grid; gap:6px;">
-        <a href="admin-login.html">Admin (UI)</a>
+        <a href="admin-login.php">Admin (UI)</a>
         <a href="checkout.html">Checkout (UI)</a>
       </div>
     </div>

@@ -61,17 +61,17 @@ session_start();
 
         <div>
           <label>Name</label>
-          <input type="text" id="contact_name" class="form-input" required>
+          <input type="text" id="contact-name" class="form-input" required>
         </div>
 
         <div>
           <label>Email</label>
-          <input type="email" id="contact_email" class="form-input" required>
+          <input type="email" id="contact-email" class="form-input" required>
         </div>
 
         <div>
           <label>Message</label>
-          <textarea id="contact_message" class="form-input" rows="4" required></textarea>
+          <textarea id="contact-message" class="form-input" rows="4" required></textarea>
         </div>
 
         <button class="btn btn--primary" type="submit">Send Message</button>
