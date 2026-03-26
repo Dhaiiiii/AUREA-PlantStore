@@ -16,9 +16,9 @@
       <a href="index.html">Home</a>
       <a href="#plants">Shop</a>
       <a href="product.html">Product</a>
-      <a href="cart.html">Cart</a>
+      <a href="cart.php">Cart</a>
       <a href="contact.php">Contact</a>
-      <a class="cta" href="cart.html">Checkout</a>
+      <a class="cta" href="cart.php">Checkout</a>
     </nav>
   </div>
 </header>
@@ -30,7 +30,7 @@
         <h2>Your cart</h2>
         <p>Prototype UI. Later you’ll implement PHP Sessions to add/update/remove items.</p>
       </div>
-      <a class="btn btn--primary" href="checkout.html">Go to checkout</a>
+      <a class="btn btn--primary" href="checkout.php">Go to checkout</a>
     </div>
 
     <div class="split" style="grid-template-columns: 1.3fr .7fr;">
@@ -58,7 +58,7 @@
         <div style="margin-top:12px; display:flex; justify-content:space-between; font-weight:900;">
           <span>Total</span><span>$50</span>
         </div>
-        <a class="btn btn--primary" style="margin-top:12px; width:100%;" href="checkout.html">Checkout</a>
+        <a class="btn btn--primary" style="margin-top:12px; width:100%;" href="checkout.php">Checkout</a>
       </div>
     </div>
   </div>
