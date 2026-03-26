@@ -1,7 +1,7 @@
 <?php
 $host = "127.0.0.1";
 $user = "root";
-$password = "";   //EMPTY PASSWORD
+$password = "#Dai12345";   //EMPTY PASSWORD
 $database = "aurea_store";
 $port = 3306;
 

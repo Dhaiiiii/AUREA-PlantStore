@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'db.php';
 
 $sql = "SELECT product_id, name, price, quantity, description, image FROM products";
@@ -7,8 +8,10 @@ $result = $conn->query($sql);
 if (!$result) {
     die("Query failed: " . $conn->error);
 }
-?>
 
+$cartCount = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
+$orderSuccess = isset($_GET['order']) && $_GET['order'] === 'success';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,19 +26,25 @@ if (!$result) {
     <a class="brand" href="index.php" aria-label="Home">
       <img class="brand__logo" src="assets/images/logo.png" alt="Aurea Floral & Plants logo">
     </a>
+
     <nav class="nav" aria-label="Main">
       <a href="index.php">Home</a>
       <a href="#plants">Shop</a>
-      <a href="product.php">Product</a>
-      <a href="cart.html">Cart</a>
+      <a href="cart.php">Cart <?php if ($cartCount > 0) echo '(' . $cartCount . ')'; ?></a>
       <a href="contact.php">Contact</a>
-      <a class="cta" href="cart.html">Checkout</a>
+      <a class="cta" href="checkout.php">Checkout</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
+    <?php if ($orderSuccess): ?>
+      <div style="margin-bottom:18px; padding:14px 16px; border-radius:14px; background:#e8f4ea; color:#2d6a31; border:1px solid #b7dfbb; font-weight:700;">
+        Order placed successfully!
+      </div>
+    <?php endif; ?>
+
     <div class="hero__wrap">
       <div class="hero__content">
         <span class="badge">Premium Plant Store • Calm Aesthetic</span>
@@ -43,7 +52,7 @@ if (!$result) {
         <p>A modern plant shop experience — clean layout, soft greens, and premium cards. Prototype UI for CIS311.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#plants">Shop now</a>
-          <a class="btn btn--ghost" href="contact.html">Find us</a>
+          <a class="btn btn--ghost" href="contact.php">Find us</a>
         </div>
       </div>
 
@@ -64,27 +73,33 @@ if (!$result) {
         <h2>Our favorite plants</h2>
         <p>Clean product cards with calm spacing — inspired by your reference style, built as an original layout for AUREA.</p>
       </div>
-      <a class="btn btn--primary" href="product.php">View product</a>
+      <a class="btn btn--primary" href="#plants">View products</a>
     </div>
 
     <div class="grid">
-      <?php if ($result->num_rows > 0) { ?>
-        <?php while ($row = $result->fetch_assoc()) { ?>
+      <?php if ($result->num_rows > 0): ?>
+        <?php while ($row = $result->fetch_assoc()): ?>
           <a class="card" href="product.php?id=<?php echo (int)$row['product_id']; ?>">
-            <img class="card__img" src="assets/images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
+            <img
+              class="card__img"
+              src="assets/images/<?php echo htmlspecialchars($row['image']); ?>"
+              alt="<?php echo htmlspecialchars($row['name']); ?>"
+            >
+
             <div class="card__body">
               <div class="card__title"><?php echo htmlspecialchars($row['name']); ?></div>
               <div class="card__meta"><?php echo htmlspecialchars($row['description']); ?></div>
+
               <div class="card__row">
                 <div class="price">$<?php echo number_format($row['price'], 2); ?></div>
                 <div class="pill">+</div>
               </div>
             </div>
           </a>
-        <?php } ?>
-      <?php } else { ?>
+        <?php endwhile; ?>
+      <?php else: ?>
         <p>No products found.</p>
-      <?php } ?>
+      <?php endif; ?>
     </div>
   </div>
 </section>
@@ -129,10 +144,12 @@ if (!$result) {
     <div class="panel" style="background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(238,246,240,.85));">
       <h2 style="color: var(--sage-700);">Spring into green</h2>
       <p style="color: var(--muted); margin-top:6px;">Up to <b>25% off</b> selected indoor plants.</p>
+
       <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn btn--primary" href="product.php">Shop the sale</a>
+        <a class="btn btn--primary" href="#plants">Shop the sale</a>
         <a class="btn btn--ghost" style="color: var(--ink); border-color: rgba(220,234,225,.9); background: rgba(255,255,255,.75)" href="#plants">Browse</a>
       </div>
+
       <img style="margin-top:12px; border-radius: 18px; border: 1px solid rgba(220,234,225,.9)" src="assets/images/room.jpg" alt="Plants in room">
     </div>
   </div>
@@ -148,6 +165,7 @@ if (!$result) {
         <input class="input" placeholder="Enter your email" />
         <a class="btn btn--primary" href="#">Subscribe</a>
       </div>
+
       <div class="small">Prototype only. No emails are collected.</div>
     </div>
   </div>
@@ -159,20 +177,22 @@ if (!$result) {
       <b style="color: var(--ink);">AUREA – Floral & Plants</b>
       <div style="margin-top:6px;">Original UI prototype inspired by modern plant store layouts.</div>
     </div>
+
     <div>
       <b style="color: var(--ink);">Pages</b>
       <div style="margin-top:8px; display:grid; gap:6px;">
         <a href="index.php">Home</a>
-        <a href="product.php">Product</a>
-        <a href="cart.html">Cart</a>
-        <a href="contact.html">Contact</a>
+        <a href="#plants">Shop</a>
+        <a href="cart.php">Cart</a>
+        <a href="contact.php">Contact</a>
       </div>
     </div>
+
     <div>
       <b style="color: var(--ink);">Project</b>
       <div style="margin-top:8px; display:grid; gap:6px;">
-        <a href="admin-login.php">Admin (UI)</a>
-        <a href="checkout.html">Checkout (UI)</a>
+        <a href="admin-login.php">Admin</a>
+        <a href="checkout.php">Checkout</a>
       </div>
     </div>
   </div>
