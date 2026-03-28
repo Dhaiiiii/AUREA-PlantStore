@@ -170,13 +170,13 @@ if (empty($cartItems)) {
 
                 <div style="display:flex; flex-direction:column; gap:10px; min-width:180px;">
                   <div style="display:flex; align-items:center; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
-                    <a class="btn btn--ghost" href="cart.php?action=decrease&id=<?php echo $item['product_id']; ?>">-</a>
+                    <a class="btn btn--ghost" style=" color:#4f6f52; border:1px solid #4f6f52; background:white; font-weight:900; font-size:24px; line-height:1; width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; " href="cart.php?action=decrease&id=<?php echo $item['product_id']; ?>"> − </a>
 
                     <span style="min-width:60px; text-align:center; font-weight:700;">
                       Qty: <?php echo $item['qty']; ?>
                     </span>
 
-                    <a class="btn btn--ghost" href="cart.php?action=increase&id=<?php echo $item['product_id']; ?>">+</a>
+                    <a class="btn btn--ghost" style="color:#4f6f52;border:1px solid #4f6f52;background:white;font-weight:900;font-size:24px;line-height:1;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;" href="cart.php?action=increase&id=<?php echo $item['product_id']; ?>">+</a>
                   </div>
 
                   <div style="text-align:right;">
