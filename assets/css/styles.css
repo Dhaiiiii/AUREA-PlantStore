@@ -118,6 +118,10 @@ img{max-width:100%;display:block}
 }
 .btn--ghost:hover{filter: brightness(1.08); transform: translateY(-1px)}
 
+.btn--danger:hover {
+    background-color: #c0392b;
+}
+
 .hero__stats{
   position:absolute; left: 18px; right: 18px; bottom: 16px;
   display:grid; gap: 12px;
@@ -242,3 +246,5 @@ img{max-width:100%;display:block}
 @media (max-width: 900px){ .footer__grid{grid-template-columns: 1fr;} }
 .footer a{color: var(--muted)}
 .footer a:hover{color: var(--ink)}
+
+

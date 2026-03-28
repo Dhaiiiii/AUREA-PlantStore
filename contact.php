@@ -36,6 +36,7 @@ session_start();
   <div class="container topbar__inner">
     <a class="brand" href="index.php" aria-label="Home">
       <img class="brand__logo" src="assets/images/logo.png" alt="Aurea Floral & Plants logo">
+     
     </a>
     <nav class="nav" aria-label="Main">
       <a href="index.php">Home</a>
@@ -44,6 +45,7 @@ session_start();
       <a href="cart.php">Cart</a>
       <a href="contact.php">Contact</a>
       <a class="cta" href="cart.php">Checkout</a>
+      <a class="btn btn--secondary" href="help.php">Help</a>
     </nav>
   </div>
 </header>

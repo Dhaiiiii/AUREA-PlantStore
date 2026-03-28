@@ -120,9 +120,10 @@ if (empty($cartItems)) {
     <nav class="nav" aria-label="Main">
       <a href="index.php">Home</a>
       <a href="index.php#plants">Shop</a>
-      <a href="cart.php">Cart <?php if ($cartCount > 0) echo '(' . $cartCount . ')'; ?></a>
+      <a href="cart.php" style="display:flex; align-items:center; gap:6px;"><img src="assets/images/cart_logo.png" alt="Cart" style="width:24px; height:24px;"> Cart <?php if ($cartCount > 0) echo '(' . $cartCount . ')'; ?></a>
       <a href="contact.php">Contact</a>
       <a class="cta" href="checkout.php">Checkout</a>
+      <a class="btn btn--secondary" href="help.php">Help</a>
     </nav>
   </div>
 </header>
@@ -137,7 +138,7 @@ if (empty($cartItems)) {
 
       <?php if (!empty($cartItems)): ?>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn--ghost" href="cart.php?action=clear">Delete all</a>
+          <a class="btn btn--danger" href="cart.php?action=clear">Delete all</a>
           <a class="btn btn--primary" href="checkout.php">Go to checkout</a>
         </div>
       <?php endif; ?>

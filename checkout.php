@@ -2,6 +2,7 @@
 session_start();
 include 'db.php';
 
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
@@ -82,9 +83,10 @@ $total = $subtotal + $delivery - $discount;
     <nav class="nav" aria-label="Main">
       <a href="index.php">Home</a>
       <a href="index.php#plants">Shop</a>
-      <a href="cart.php">Cart <?php if ($cartCount > 0) echo '(' . $cartCount . ')'; ?></a>
+      <a href="cart.php" style="display:flex; align-items:center; gap:6px;"><img src="assets/images/cart_logo.png" alt="Cart" style="width:24px; height:24px;"> Cart <?php if ($cartCount > 0) echo '(' . $cartCount . ')'; ?></a>
       <a href="contact.php">Contact</a>
       <a class="cta" href="checkout.php">Checkout</a>
+      <a class="btn btn--secondary" href="help.php">Help</a>
     </nav>
   </div>
 </header>
