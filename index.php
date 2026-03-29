@@ -50,7 +50,6 @@ $orderSuccess = isset($_GET['order']) && $_GET['order'] === 'success';
       <div class="hero__content">
         <span class="badge">Premium Plant Store • Calm Aesthetic</span>
         <h1>Discover beautiful indoor Plants for every corner of your home</h1>
-        <p>A modern plant shop experience — clean layout, soft greens, and premium cards. Prototype UI for CIS311.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#plants">Shop now</a>
           <a class="btn btn--ghost" href="contact.php">Find us</a>
@@ -72,7 +71,6 @@ $orderSuccess = isset($_GET['order']) && $_GET['order'] === 'success';
     <div class="section__head">
       <div>
         <h2>Our favorite plants</h2>
-        <p>Clean product cards with calm spacing — inspired by your reference style, built as an original layout for AUREA.</p>
       </div>
       <a class="btn btn--primary" href="#plants">View products</a>
     </div>
@@ -151,32 +149,16 @@ $orderSuccess = isset($_GET['order']) && $_GET['order'] === 'success';
         <a class="btn btn--ghost" style="color: var(--ink); border-color: rgba(220,234,225,.9); background: rgba(255,255,255,.75)" href="#plants">Browse</a>
       </div>
 
-      <img style="margin-top:12px; border-radius: 18px; border: 1px solid rgba(220,234,225,.9)" src="assets/images/room.jpg" alt="Plants in room">
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="dark-strip">
-      <h2>Get the green in your inbox</h2>
-      <p>Premium dark section like your reference — but customized for our UI.</p>
 
-      <div class="newsletter">
-        <input class="input" placeholder="Enter your email" />
-        <a class="btn btn--primary" href="#">Subscribe</a>
-      </div>
-
-      <div class="small">Prototype only. No emails are collected.</div>
-    </div>
-  </div>
-</section>
 
 <footer class="footer">
   <div class="container footer__grid">
     <div>
       <b style="color: var(--ink);">AUREA – Floral & Plants</b>
-      <div style="margin-top:6px;">Original UI prototype inspired by modern plant store layouts.</div>
     </div>
 
     <div>
