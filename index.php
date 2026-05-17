@@ -1,15 +1,21 @@
-<?php
+/*
+====================================
+Developed by: Haya
+====================================
+*/<?php
 session_start();
+// Fetch products from database
 include 'db.php';
 
 $sql = "SELECT product_id, name, price, quantity, description, image FROM products";
 $result = $conn->query($sql);
-
+// Check if database query executed successfully
 if (!$result) {
     die("Query failed: " . $conn->error);
 }
-
+// Calculate total items in cart using session data
 $cartCount = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
+// Check if order was placed successfully
 $orderSuccess = isset($_GET['order']) && $_GET['order'] === 'success';
 ?>
 <!doctype html>
@@ -36,6 +42,7 @@ $orderSuccess = isset($_GET['order']) && $_GET['order'] === 'success';
       <a class="btn btn--secondary" href="help.php">Help</a>
     </nav>
   </div>
+  <!-- Navigation bar and header section -->
 </header>
 
 <section class="hero">
