@@ -1,7 +1,4 @@
 <?php
-<<<<<<< Updated upstream
-// Developed by Amjad & Haya - Product page (details + add to cart + stock validation)
-=======
 
 // Developed by: Amjad & Haya
 // Task: Product details page - quantity selection - add to cart - stock validation
@@ -9,7 +6,6 @@
 // Validate product ID from URL
 // Check stock quantity against requested amount
 // Use PHP Session to store cart items
->>>>>>> Stashed changes
 session_start();
 include 'db.php';
 

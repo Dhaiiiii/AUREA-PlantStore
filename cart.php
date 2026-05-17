@@ -1,25 +1,10 @@
 <?php
-<<<<<<< Updated upstream
-/*
-====================================
-Developed by: Dorah
-Task: Shopping Cart Management System
-
-- View cart items
-- Increase or decrease quantity
-- Remove products
-- Clear the cart
-- Calculate subtotal and total price
-====================================
-*/
-=======
 // Developed by: Dorrah
 // Task: Cart page - update quantities - remove items - calculate totals
 
 // Handle cart actions (increase, decrease, remove, clear)
 // Calculate subtotal for each item (price * quantity)
 // Calculate total order price
->>>>>>> Stashed changes
 session_start();
 include 'db.php';
 
@@ -35,20 +20,12 @@ if (isset($_GET['action'])) {
   if (($action === 'increase' || $action === 'decrease' || $action === 'remove') && isset($_GET['id'])) {
     $id = (int) $_GET['id'];
 
-<<<<<<< Updated upstream
-        if ($action === 'remove') {
-            unset($_SESSION['cart'][$id]);
-        } else { // Retrieve product stock from database
-            $sql = "SELECT quantity FROM products WHERE product_id = $id";
-            $result = $conn->query($sql);
-=======
     if ($action === 'remove') {
       unset($_SESSION['cart'][$id]);
     } else {
       // Retrieve product stock from database
       $sql = "SELECT quantity FROM products WHERE product_id = $id";
       $result = $conn->query($sql);
->>>>>>> Stashed changes
 
       if ($result && $result->num_rows > 0) {
         $product = $result->fetch_assoc();
@@ -127,10 +104,7 @@ if (!empty($_SESSION['cart'])) {
     }
   }
 }
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 // Calculate final order total
 $total = $subtotal + $delivery - $discount;
 if (empty($cartItems)) {

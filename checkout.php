@@ -1,12 +1,8 @@
 <?php
-<<<<<<< Updated upstream
-// Developed by dorah
-=======
 // Developed by: Dorrah
 // Task: Checkout page - buy process - clear cart - save past purchases using Cookies
 // Calculate final total (subtotal + delivery - discount)
 // Developed by: Dhay - Update database stock quantity after purchase
->>>>>>> Stashed changes
 session_start();
 include 'db.php';
 
@@ -88,10 +84,7 @@ if (!empty($_SESSION['cart'])) {
 if (empty($cartItems)) {
   $delivery = 0;
 }
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 // Calculate final total (subtotal + delivery - discount)
 $total = $subtotal + $delivery - $discount;
 ?>
