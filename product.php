@@ -1,5 +1,15 @@
 <?php
+<<<<<<< Updated upstream
 // Developed by Amjad & Haya - Product page (details + add to cart + stock validation)
+=======
+
+// Developed by: Amjad & Haya
+// Task: Product details page - quantity selection - add to cart - stock validation
+
+// Validate product ID from URL
+// Check stock quantity against requested amount
+// Use PHP Session to store cart items
+>>>>>>> Stashed changes
 session_start();
 include 'db.php';
 
@@ -53,7 +63,7 @@ if (isset($_POST['add_to_cart'])) {
     }
 }
 
-$cartCount = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
+$cartCount = getCartCount();
 $stockQty = (int) $product['quantity'];
 ?>
 <!doctype html>
@@ -281,18 +291,9 @@ $stockQty = (int) $product['quantity'];
       border-radius: 50%;
     }
 
-    .stock-pill.low {
-      background: #fef3e2;
-      color: #a0522d;
-    }
-
+    .stock-pill.low { background: #fef3e2; color: #a0522d; }
     .stock-pill.low::before { background: var(--gold); }
-
-    .stock-pill.out {
-      background: #fdecea;
-      color: var(--red);
-    }
-
+    .stock-pill.out { background: #fdecea; color: var(--red); }
     .stock-pill.out::before { background: var(--red); }
 
     .cart-form {
@@ -356,9 +357,7 @@ $stockQty = (int) $product['quantity'];
     }
 
     .qty-input::-webkit-outer-spin-button,
-    .qty-input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-    }
+    .qty-input::-webkit-inner-spin-button { -webkit-appearance: none; }
 
     .btn-add {
       width: 100%;
@@ -411,17 +410,8 @@ $stockQty = (int) $product['quantity'];
       animation: fadeIn .3s ease;
     }
 
-    .alert.success {
-      background: #e8f4ea;
-      color: #2d6a31;
-      border: 1px solid #b7dfbb;
-    }
-
-    .alert.error {
-      background: #fdecea;
-      color: var(--red);
-      border: 1px solid #f5c6c2;
-    }
+    .alert.success { background: #e8f4ea; color: #2d6a31; border: 1px solid #b7dfbb; }
+    .alert.error { background: #fdecea; color: var(--red); border: 1px solid #f5c6c2; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-6px); }
@@ -441,24 +431,64 @@ $stockQty = (int) $product['quantity'];
       gap: 32px;
     }
 
-    .footer a {
-      color: rgba(255,255,255,.6);
-      font-size: .88rem;
-      transition: color .2s;
-    }
-
+    .footer a { color: rgba(255,255,255,.6); font-size: .88rem; transition: color .2s; }
     .footer a:hover { color: var(--white); }
-
-    .footer b {
-      color: var(--white);
-      font-size: .95rem;
-    }
+    .footer b { color: var(--white); font-size: .95rem; }
 
     @media (max-width: 750px) {
       .product-grid { grid-template-columns: 1fr; gap: 28px; }
       .product-title { font-size: 1.8rem; }
       .footer__grid { grid-template-columns: 1fr; }
       .topbar__inner { flex-wrap: wrap; }
+    }
+
+    /* Help Modal */
+    .help-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .help-modal-overlay.active {
+      display: flex;
+    }
+
+    .help-modal {
+      background: white;
+      border-radius: 18px;
+      padding: 32px;
+      max-width: 460px;
+      width: 90%;
+    }
+
+    .help-modal h2 {
+      color: var(--forest);
+      margin-bottom: 16px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .help-modal ul {
+      line-height: 2;
+      color: var(--muted);
+      padding-right: 18px;
+    }
+
+    .help-close-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: var(--forest);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
     }
   </style>
 </head>
@@ -478,6 +508,11 @@ $stockQty = (int) $product['quantity'];
         <?php if ($cartCount > 0): ?>
           <span class="cart-badge"><?php echo $cartCount; ?></span>
         <?php endif; ?>
+      </a>
+      <!-- Help button opens popup -->
+      <a href="#" onclick="document.getElementById('helpModal').classList.add('active'); return false;"
+         style="background:var(--sage); color:white; padding:8px 18px; border-radius:999px; font-size:.88rem; font-weight:700;">
+        Help
       </a>
     </nav>
   </div>
@@ -529,7 +564,6 @@ $stockQty = (int) $product['quantity'];
             <form method="POST" id="cartForm">
               <div class="qty-row">
                 <label class="qty-label" for="qtyInput">Qty</label>
-
                 <div class="qty-control">
                   <button type="button" class="qty-btn" onclick="changeQty(-1)">-</button>
                   <input
@@ -545,20 +579,11 @@ $stockQty = (int) $product['quantity'];
                   >
                   <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
                 </div>
-
-                <span style="font-size:.8rem; color:var(--muted);">
-                  Max: <?php echo $stockQty; ?>
-                </span>
+                <span style="font-size:.8rem; color:var(--muted);">Max: <?php echo $stockQty; ?></span>
               </div>
-
-              <button type="submit" name="add_to_cart" class="btn-add">
-                Add to Cart
-              </button>
+              <button type="submit" name="add_to_cart" class="btn-add">Add to Cart</button>
             </form>
-
-            <a href="cart.php" style="text-align:center; color:var(--sage); font-size:.88rem; font-weight:600;">
-              View Cart
-            </a>
+            <a href="cart.php" style="text-align:center; color:var(--sage); font-size:.88rem; font-weight:600;">View Cart</a>
           <?php else: ?>
             <button class="btn-add" disabled>Out of Stock</button>
           <?php endif; ?>
@@ -572,11 +597,8 @@ $stockQty = (int) $product['quantity'];
   <div class="container footer__grid">
     <div>
       <b>AUREA - Floral & Plants</b>
-      <div style="margin-top:8px; font-size:.88rem; line-height:1.7;">
-        A modern natural plant store.
-      </div>
+      <div style="margin-top:8px; font-size:.88rem; line-height:1.7;">A modern natural plant store.</div>
     </div>
-
     <div>
       <b>Pages</b>
       <div style="margin-top:10px; display:grid; gap:8px;">
@@ -586,7 +608,6 @@ $stockQty = (int) $product['quantity'];
         <a href="contact.php">Contact</a>
       </div>
     </div>
-
     <div>
       <b>Project</b>
       <div style="margin-top:10px; display:grid; gap:8px;">
@@ -596,6 +617,21 @@ $stockQty = (int) $product['quantity'];
     </div>
   </div>
 </footer>
+
+<!-- Help Popup Modal -->
+<div id="helpModal" class="help-modal-overlay">
+  <div class="help-modal">
+    <h2>How to order a plant 🌿</h2>
+    <ul>
+      <li>Choose the quantity using the <b>+</b> and <b>−</b> buttons</li>
+      <li>Click <b>Add to Cart</b> to add the plant to your cart</li>
+      <li>Go to <b>Cart</b> to review your order</li>
+      <li>Click <b>Checkout</b> to complete your purchase</li>
+      <li>If a product is out of stock, it cannot be added to the cart</li>
+    </ul>
+    <button class="help-close-btn" onclick="document.getElementById('helpModal').classList.remove('active')">Close</button>
+  </div>
+</div>
 
 <script>
   const maxQty = <?php echo $stockQty; ?>;

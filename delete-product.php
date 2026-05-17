@@ -25,4 +25,3 @@ if ($conn->query($query)) {
 } else {
     echo "Error deleting product: " . $conn->error;
 }
-?>

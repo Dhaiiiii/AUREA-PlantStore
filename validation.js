@@ -1,6 +1,9 @@
-// -----------------------------
-// ADD PRODUCT VALIDATION
-// -----------------------------
+// Developed by: Fatimah
+// Task: JavaScript form validation for all forms
+
+// validateAddProduct() - validates add product form
+// validateEditProduct() - validates edit product form  
+// validateContact() - validates contact form
 function validateAddProduct() {
     const name = document.getElementById("name").value.trim();
     const price = document.getElementById("price").value.trim();
