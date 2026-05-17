@@ -1,7 +1,20 @@
+/*
+====================================
+Developed by: Dorah
+Task: Shopping Cart Management System
+
+- View cart items
+- Increase or decrease quantity
+- Remove products
+- Clear the cart
+- Calculate subtotal and total price
+====================================
+*/
 <?php
 session_start();
 include 'db.php';
 
+// Initialize shopping cart session
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
@@ -15,7 +28,7 @@ if (isset($_GET['action'])) {
 
         if ($action === 'remove') {
             unset($_SESSION['cart'][$id]);
-        } else {
+        } else { // Retrieve product stock from database
             $sql = "SELECT quantity FROM products WHERE product_id = $id";
             $result = $conn->query($sql);
 
@@ -96,7 +109,7 @@ if (!empty($_SESSION['cart'])) {
         }
     }
 }
-
+// Calculate final order total
 $total = $subtotal + $delivery - $discount;
 if (empty($cartItems)) {
     $delivery = 0;

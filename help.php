@@ -1,3 +1,12 @@
+/*
+====================================
+Developed by: Dorah
+Task: Customer Support & Help Interface
+
+This page provides customer support information
+and allows users to contact the store for assistance.
+====================================
+*/
 <?php
 // help.php
 session_start();
