@@ -2,7 +2,8 @@
 ====================================
 Developed by: Haya
 ====================================
-*/<?php
+*/
+<?php
 session_start();
 // Fetch products from database
 include 'db.php';
