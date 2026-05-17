@@ -1,4 +1,5 @@
 <?php
+// Developed by dorah
 session_start();
 include 'db.php';
 
@@ -63,7 +64,7 @@ if (!empty($_SESSION['cart'])) {
 if (empty($cartItems)) {
     $delivery = 0;
 }
-
+// Calculate final total (subtotal + delivery - discount)
 $total = $subtotal + $delivery - $discount;
 ?>
 <!doctype html>

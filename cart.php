@@ -1,3 +1,4 @@
+<?php
 /*
 ====================================
 Developed by: Dorah
@@ -10,7 +11,6 @@ Task: Shopping Cart Management System
 - Calculate subtotal and total price
 ====================================
 */
-<?php
 session_start();
 include 'db.php';
 

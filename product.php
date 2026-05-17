@@ -1,4 +1,5 @@
 <?php
+// Developed by Amjad & Haya - Product page (details + add to cart + stock validation)
 session_start();
 include 'db.php';
 
